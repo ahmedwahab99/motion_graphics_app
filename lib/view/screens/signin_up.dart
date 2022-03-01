@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motion_graphics_app/constants.dart';
+import 'package:motion_graphics_app/view/widgets/login_fields.dart';
+import 'package:motion_graphics_app/view/widgets/signup_fields.dart';
 
 class Signin extends StatefulWidget {
   const Signin({Key? key}) : super(key: key);
@@ -14,20 +16,15 @@ class _SigninState extends State<Signin> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-
-      /// same count as tapBar items
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(250),
           child: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {},
-            ),
+            automaticallyImplyLeading: false,
             flexibleSpace: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [ConstColors.purple, ConstColors.blue],
+                  colors: [ConstColors.primary, ConstColors.secondary],
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                 ),
@@ -75,33 +72,8 @@ class _SigninState extends State<Signin> {
         ),
         body: const TabBarView(children: [
           LoginFields(),
-          Icon(Icons.safety_divider),
+          SignupFields(),
         ]),
-      ),
-    );
-  }
-}
-
-class LoginFields extends StatelessWidget {
-  const LoginFields({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-      child: Column(
-        children: [
-          TextField(
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: ConstColors.purple)),
-              focusedBorder: const OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Color.fromARGB(255, 144, 51, 160))),
-              hintText: "Enter Email",
-            ),
-          ),
-        ],
       ),
     );
   }
